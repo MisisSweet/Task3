@@ -25,22 +25,7 @@ namespace ConsoleApp1
         }
         static void Main(string[] args)
         {
-            bool replace = false;
-            for(int i = 0; i < args.Length - 1; i++)
-            {
-                for (int j = i + 1; j < args.Length; j++)
-                {
-                    if (args[i] == args[j])
-                    {
-                        replace = true;
-                        break;
-                    }
-                }
-                if (replace)
-                    break;
-            }
-                
-            if (args.Length >= 3 && args.Length % 2 == 1 && args.Length != 0 && !replace)
+            if (args.Length >= 3 && args.Length % 2 == 1 && args.Length != 0 && args.GroupBy(x => x).Where(g => g.Count() > 1).Select(y => y.Key).ToList().Count == 0)
             {
                 
                 while (true)
