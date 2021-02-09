@@ -25,7 +25,22 @@ namespace ConsoleApp1
         }
         static void Main(string[] args)
         {
-            if (args.Length >= 3 && args.Length % 2 == 1 && args.Length != 0)
+            bool replace = false;
+            for(int i = 0; i < args.Length - 1; i++)
+            {
+                for (int j = i + 1; j < args.Length; j++)
+                {
+                    if (args[i] == args[j])
+                    {
+                        replace = true;
+                        break;
+                    }
+                }
+                if (replace)
+                    break;
+            }
+                
+            if (args.Length >= 3 && args.Length % 2 == 1 && args.Length != 0 && !replace)
             {
                 
                 while (true)
